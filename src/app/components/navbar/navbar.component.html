@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light nav-fill">
+  <div class="container">
+    <a class="navbar-brand">Souq</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a
+            [routerLink]="['/']"
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home
+          </a>
+        </li>
+        <li *ngIf="isUser" class="nav-item">
+          <a
+            [routerLink]="['/cart']"
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >cart
+          </a>
+        </li>
+        <li *ngIf="isUser" class="nav-item">
+          <a
+            [routerLink]="['/admin']"
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >dashboard</a
+          >
+        </li>
+        <li *ngIf="!isUser" class="nav-item">
+          <a
+            [routerLink]="['/login']"
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >login</a
+          >
+        </li>
+        <li *ngIf="!isUser" class="nav-item">
+          <a
+            [routerLink]="['/signup']"
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >signup</a
+          >
+        </li>
+        <li *ngIf="isUser" class="nav-item">
+          <a
+            (click)="logout()"
+            [routerLink]="['/']"
+            class="btn btn-danger btn-sm"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >logout</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

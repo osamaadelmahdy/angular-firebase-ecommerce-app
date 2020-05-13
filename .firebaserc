@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "market-cabe3": {
+      "hosting": {
+        "souq": [
+          "market-cabe3"
+        ]
+      }
+    }
+  }
+}

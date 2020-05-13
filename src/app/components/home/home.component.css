@@ -1,0 +1,14 @@
+.modal img{
+    height: 250px;
+    margin: 0px 108px;
+}
+.card img, .card .card-body{
+    width: 250px;
+    cursor: pointer;
+}
+.card{
+    margin: 25px 0;
+}
+.card .btn-primary {
+    color: #fff;
+}

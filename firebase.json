@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "souq",
+      "public": "dist/souq",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+<div class="modal fade" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ modal_item.name }}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>price: {{ modal_item.price | currency }}</p>
+        <img [src]="modal_item.imgurl" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">add to cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let good of goods">
+      <div class="card" style="width: 18rem;">
+        <img
+          [src]="good.imgurl"
+          class="card-img-top"
+          data-target="#exampleModal"
+          data-toggle="modal"
+          (click)="veiwModal(good.id)"
+        />
+        <div
+          class="card-body"
+          (click)="veiwModal(good.id)"
+          data-target="#exampleModal"
+          data-toggle="modal"
+        >
+          <h5 class="card-title">{{ good.name | titlecase }}</h5>
+          <p class="card-text">{{ good.price | currency }}</p>
+        </div>
+        <a (click)="addToCart()" class="btn btn-primary">Add To Cart</a>
+      </div>
+    </div>
+  </div>
+</div>

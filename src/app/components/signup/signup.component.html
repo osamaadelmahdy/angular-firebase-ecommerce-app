@@ -1,0 +1,55 @@
+<h1 class="mx-auto my-4" style="width: 200px;">Signup</h1>
+<form #userData="ngForm" (ngSubmit)="onSubmit(userData)">
+  <div class="container">
+    <input
+      #name="ngModel"
+      ngModel
+      name="name"
+      type="text"
+      placeholder="your name"
+      class="form-control"
+      required
+    />
+    <div *ngIf="name.invalid && name.touched" class="alert alert-danger">
+      enter your name
+    </div>
+    <input
+      ngModel
+      required
+      email
+      name="email"
+      type="email"
+      placeholder="your email"
+      class="form-control"
+    />
+    <input
+      ngModel
+      name="password"
+      #password="ngModel"
+      placeholder="your password"
+      type="password"
+      class="form-control"
+      required
+    />
+    <input
+      ngModel
+      name="confirmPassword"
+      #confirmPassword="ngModel"
+      placeholder="your password again"
+      type="password"
+      class="form-control"
+      required
+    />
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="userData.invalid || password.value !== confirmPassword.value"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+<div *ngIf="formError" class="alert alert-danger">
+  {{ formError.massage }}
+</div>
