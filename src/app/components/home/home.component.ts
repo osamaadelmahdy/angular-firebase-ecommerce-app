@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { good } from '../../interfaces/good.interface';
 import { GoodsService } from 'src/app/goods.service';
 import { Subscription } from 'rxjs';
+import { CartService } from 'src/app/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,22 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
-  constructor(private data: GoodsService) {}
+  showAmount: number = null;
+  goods = [];
+  modalItem = {
+    id: '',
+    name: '',
+    price: '',
+    imgurl: '',
+  };
+
+  constructor(private data: GoodsService, private cart: CartService) {}
 
   ngAfterViewInit() {}
   sub: Subscription;
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-  goods = [];
 
   ngOnInit() {
     this.sub = this.data.getalldata().subscribe((data) => {
@@ -32,23 +41,28 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  modal_item = {
-    id: '',
-    name: '',
-    price: '',
-    imgurl: '',
-  };
-
-  veiwModal(i) {
+  veiwModal(id) {
     this.goods.filter((data) => {
-      if (data.id == i) {
-        this.modal_item = data;
+      if (data.id == id) {
+        this.modalItem = data;
       }
     });
-    console.log(this.modal_item);
+    console.log(this.modalItem);
   }
 
-  addToCart() {
-    console.log('done');
+  addToCart(id) {
+    console.log('done', id);
+    this.showAmount = id;
+  }
+
+  buy(name, amount, price) {
+    let itemData = {
+      name,
+      amount: +amount,
+      price: +price,
+    };
+    this.cart.addItemToCart(itemData).then(() => {
+      this.showAmount = null;
+    });
   }
 }

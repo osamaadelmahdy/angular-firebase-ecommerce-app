@@ -1,1 +1,41 @@
-<p>cart works!</p>
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-4" ">
+      <div class="card" style="width: 18rem;">
+        <h5 class="card-title"></h5>
+        <p class="card-text"></p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <ul class="list-group" style="width: 100%;">
+      <li
+        *ngFor="let cart of cartItems"
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        {{ cart.name | titlecase }}
+        <p class="my-auto" style="width: 50px;">{{ cart.price | currency }}</p>
+        <span style="font-size: 13px;" class="badge badge-primary badge-pill"
+          >Total:{{ +cart.amount * +cart.price }}
+        </span>
+
+        <div style="display: inherit;">
+          <label style="margin: auto 10px;" for="amount">Amount: </label>
+          <input
+            style="width: 100px;"
+            class="form-control"
+            type="number"
+            name="amount"
+            value="{{ cart.amount }}"
+            id="amount"
+          />
+        </div>
+
+        <input type="submit" class="btn-sm btn btn-danger" value="Remove" />
+      </li>
+    </ul>
+  </div>
+</div>

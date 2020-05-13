@@ -40,6 +40,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
       appId: '1:686556154362:web:d959b83710ab889040fc43',
     }),
     AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
